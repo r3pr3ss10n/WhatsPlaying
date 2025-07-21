@@ -48,7 +48,7 @@ class MenuBarApp: NSObject, ObservableObject {
 
                 const albumPart = album && album.js ? ` — ${album.js}` : '';
 
-                return `${title.js}${albumPart} — ${artist.js}`;
+                return `${artist.js}${albumPart} — ${title.js}`;
             } catch (error) {
                 return '';
             }
