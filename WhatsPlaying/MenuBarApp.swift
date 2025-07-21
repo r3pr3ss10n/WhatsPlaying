@@ -5,6 +5,7 @@ import OSAKit
 class MenuBarApp: NSObject, ObservableObject {
     private var statusItem: NSStatusItem?
     private var timer: Timer?
+    private var showAlbum = false
 
     override init() {
         super.init()
@@ -30,6 +31,8 @@ class MenuBarApp: NSObject, ObservableObject {
     }
 
     private func fetchMusicInfo() {
+        let albumPart = showAlbum ? "const albumPart = album && album.js ? ` — ${album.js}` : '';" : "const albumPart = '';"
+
         let script = """
         function run() {
             try {
@@ -37,7 +40,7 @@ class MenuBarApp: NSObject, ObservableObject {
                 MediaRemote.load;
 
                 const MRNowPlayingRequest = $.NSClassFromString('MRNowPlayingRequest');
-                
+
                 // idk if i should show appName
                 // const appName = MRNowPlayingRequest.localNowPlayingPlayerPath.client.displayName;
                 const infoDict = MRNowPlayingRequest.localNowPlayingItem.nowPlayingInfo;
@@ -46,7 +49,7 @@ class MenuBarApp: NSObject, ObservableObject {
                 const album = infoDict.valueForKey('kMRMediaRemoteNowPlayingInfoAlbum');
                 const artist = infoDict.valueForKey('kMRMediaRemoteNowPlayingInfoArtist');
 
-                const albumPart = album && album.js ? ` — ${album.js}` : '';
+                \(albumPart)
 
                 return `${artist.js}${albumPart} — ${title.js}`;
             } catch (error) {
@@ -86,6 +89,11 @@ class MenuBarApp: NSObject, ObservableObject {
     @objc private func showMenu() {
         let menu = NSMenu()
 
+        let showAlbumItem = NSMenuItem(title: "Show Album", action: #selector(toggleShowAlbum), keyEquivalent: "")
+        showAlbumItem.target = self
+        showAlbumItem.state = showAlbum ? .on : .off
+        menu.addItem(showAlbumItem)
+
         let quitItem = NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: "q")
         quitItem.target = self
         menu.addItem(quitItem)
@@ -98,5 +106,10 @@ class MenuBarApp: NSObject, ObservableObject {
     @objc private func quit() {
         timer?.invalidate()
         NSApplication.shared.terminate(nil)
+    }
+
+    @objc private func toggleShowAlbum() {
+        showAlbum.toggle()
+        fetchMusicInfo()
     }
 }
