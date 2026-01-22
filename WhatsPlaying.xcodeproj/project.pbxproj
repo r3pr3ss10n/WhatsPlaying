@@ -6,13 +6,53 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXCopyFilesBuildPhase section */
+		EA837DBC2F22C1E80008FA9B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		EACFD8A72E2EEA7C005B5192 /* WhatsPlaying.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsPlaying.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		EA837DBE2F22C2080008FA9B /* Exceptions for "WhatsPlaying" folder in "WhatsPlaying" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			assetTagsByRelativePath = {
+				"Resources/mediaremote-adapter.pl" = (New, );
+			};
+			target = EACFD8A62E2EEA7C005B5192 /* WhatsPlaying */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		EA837DBD2F22C1E80008FA9B /* Exceptions for "WhatsPlaying" folder in "Embed Frameworks" phase from "WhatsPlaying" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			attributesByRelativePath = {
+				Resources/Frameworks/MediaRemoteAdapter.framework = (RemoveHeadersOnCopy, );
+			};
+			buildPhase = EA837DBC2F22C1E80008FA9B /* Embed Frameworks */;
+			membershipExceptions = (
+				Resources/Frameworks/MediaRemoteAdapter.framework,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		EACFD8A92E2EEA7C005B5192 /* WhatsPlaying */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				EA837DBE2F22C2080008FA9B /* Exceptions for "WhatsPlaying" folder in "WhatsPlaying" target */,
+				EA837DBD2F22C1E80008FA9B /* Exceptions for "WhatsPlaying" folder in "Embed Frameworks" phase from "WhatsPlaying" target */,
+			);
 			path = WhatsPlaying;
 			sourceTree = "<group>";
 		};
@@ -55,6 +95,7 @@
 				EACFD8A32E2EEA7C005B5192 /* Sources */,
 				EACFD8A42E2EEA7C005B5192 /* Frameworks */,
 				EACFD8A52E2EEA7C005B5192 /* Resources */,
+				EA837DBC2F22C1E80008FA9B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -77,6 +118,9 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
@@ -253,6 +297,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WhatsPlaying/Resources/Frameworks",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -279,6 +327,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WhatsPlaying/Resources/Frameworks",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";

@@ -12,9 +12,14 @@ Every alternative to this app works only with Spotify or Apple music, i use neit
 
 ## How it works now?
 
-So instead of using MediaRemote directly, this app uses a workaround:
+This app now uses [mediaremote-adapter](https://github.com/ungive/mediaremote-adapter) - a library that provides stable access to MediaRemote on macOS 15.4+:
 
-1. Runs JavaScript via `osascript`
-2. JavaScript loads MediaRemote framework at runtime
-3. Grabs the current song info from the system
-4. Updates menu bar every 2 seconds
+1. Uses Perl system binary which has entitlements to access MediaRemote
+2. Runs `mediaremote-adapter.pl` script with bundled `MediaRemoteAdapter.framework`
+3. Streams now playing information in real-time via JSON
+4. Updates menu bar instantly when track changes
+
+## Compatibility
+
+- **macOS 15.4+**: Works using mediaremote-adapter
+- **All music players**: Works with any app that uses MediaRemote (Apple Music, Spotify, TIDAL, Chrome, etc.)
